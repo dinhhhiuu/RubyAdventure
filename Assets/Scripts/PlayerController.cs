@@ -27,12 +27,16 @@ public class PlayerController : MonoBehaviour {
     // Variables related to projectile
     public GameObject projecttilePrefab;
 
+    // Variables related to audio
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start() {
         MoveAction.Enable();
         rigidbody2d = GetComponent<Rigidbody2D>();
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
     
     // Update is called once per frame
@@ -97,5 +101,9 @@ public class PlayerController : MonoBehaviour {
                 UIHandler.instance.DisplayDialogue();
             }
         }
+    }
+
+    public void PlaySound(AudioClip clip) {
+        audioSource.PlayOneShot(clip);
     }
 }

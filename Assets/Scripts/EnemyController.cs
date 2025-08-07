@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour {
     public float speed;
     public bool vertical;
     public float changeTime = 3.0f;
+    public AudioSource audioSource;
 
     // private variables
     Rigidbody2D rigidbody2d;
@@ -19,6 +20,7 @@ public class EnemyController : MonoBehaviour {
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         timer = changeTime;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -62,5 +64,6 @@ public class EnemyController : MonoBehaviour {
         broken = false;
         rigidbody2d.simulated = false;
         animator.SetTrigger("Fixed");
+        audioSource.Stop();
     }
 }
